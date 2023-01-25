@@ -5,8 +5,9 @@ import { protect } from '../middleware/authMiddleware.js'
 const router = express.Router()
 
 router.route('/')
-.post(protect,CreatePWA)
-.get(protect,getPWA)
-router.route('/delete').post(protect,deletePwa)
+  .post(protect,CreatePWA)
+  .get(protect,getPWA)
+router
+  .route('/delete').post(protect,deletePwa)
 
 export default router

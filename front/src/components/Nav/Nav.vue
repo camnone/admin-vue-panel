@@ -1,6 +1,10 @@
 <template>
   <nav class="nav">
     <div class="nav-wrapper">
+      <div class="wrapper">
+        <div>Add a template</div>
+        <div>Add a language</div>
+      </div>
       <Profile />
     </div>
   </nav>
@@ -32,8 +36,22 @@ export default {
     max-width: 72rem;
     margin: 0 auto;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     display: flex;
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 15px;
+      color: #fff;
+
+      div {
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
   }
 
 

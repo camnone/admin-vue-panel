@@ -9,6 +9,7 @@ dotenv.config()
 /* Routes */
 import userRoutes from './routes/UserRoutes.js'
 import pwaRoutes from './routes/pwaRoutes.js'
+import patternRoutes from './routes/patternRoutes.js'
 /* Config */
 import { notFound, errorHandler } from './middleware/errorMIdleware.js'
 import { connectDB } from './config/db.js'
@@ -24,12 +25,10 @@ if (process.env.NODE_ENV = 'development') {
 
 app.use(express.json())
 
-
-
 /* Routes */
 app.use('/api/users/', userRoutes)
 app.use('/api/pwa/', pwaRoutes)
-
+app.use('/api/pattern/', patternRoutes)
 /* ----- */
 
 /* MiddleWare */

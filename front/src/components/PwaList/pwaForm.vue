@@ -8,12 +8,9 @@ const createPWA = () => {
   createPwaList()
   emit('close')
 }
-
 </script>
-
-
 <template>
-  <form @submit.prevent>
+  <form @submit="createPWA" @submit.prevent>
     <select v-model="pattern" required>
       <option value="" hidden>Выберите шаблон</option>
       <option value="rob-top">rob-top</option>
@@ -37,7 +34,7 @@ const createPWA = () => {
 
     <input v-model="domain" required type="text" placeholder="Домен">
     <input v-model="language" required type="text" placeholder="Язык">
-    <button @click="createPWA">Добавить</button>
+    <button>Добавить</button>
   </form>
 </template>
 
