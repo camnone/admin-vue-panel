@@ -1,0 +1,11 @@
+@keyframes rotate {
+  0% {
+      transform: scale(1) rotate(360deg);
+  }
+  50% {
+      transform: scale(.8) rotate(-360deg);
+  }
+  100% {
+      transform: scale(1) rotate(360deg);
+  }
+}
