@@ -91,7 +91,7 @@ export default {
     color: #fff;
 
     svg {
-      color: #000;
+      color: var(--font-main-color);
       width: 100%;
       height: 50%;
     }
@@ -131,7 +131,7 @@ export default {
       border-radius: 100%;
 
       svg {
-        color: #000;
+        color: var(--font-main-color);
       }
     }
   }

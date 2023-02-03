@@ -211,7 +211,7 @@ tbody {
       background: transparent;
 
       svg {
-        background: transparent;
+        color: var(--background-color);
       }
     }
   }
