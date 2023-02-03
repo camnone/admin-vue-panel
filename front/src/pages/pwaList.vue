@@ -84,7 +84,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $secondary-color;
+    background-color: var(--font-second-color);
     width: 3rem;
     height: 3rem;
     border-radius: 100%;
@@ -125,7 +125,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $secondary-color;
+      background-color: var(--font-second-color);
       width: 3rem;
       height: 3rem;
       border-radius: 100%;
@@ -138,7 +138,7 @@ export default {
 
   &-title {
     font-weight: 500;
-    color: $main-color;
+    color: var(--font-main-color);
     font-size: 1.875rem;
   }
 

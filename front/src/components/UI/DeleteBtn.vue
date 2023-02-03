@@ -36,7 +36,7 @@ export default {
     align-items: center;
     width: 1.5rem;
     height: 1.5rem;
-    color: white;
+    color: #fff;
     background: transparent;
 
     svg {

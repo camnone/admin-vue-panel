@@ -4,4 +4,23 @@ $main-color:#0f1419;
 $secondary-color:#e6e6e6bf;
 $text-secondary-color:#3c4043;
 $bg-blue:rgb(29, 155, 240);
-  
+
+
+:root {
+  --bg-color-theme1: #ffffff;
+  --main-text-color-theme1: #0f1419;
+  --secondary-text-color-theme1: #e6e6e6bf;
+  --border-color-theme1: #e6e6e6bf;
+
+
+  --bg-color-theme2: rgb(56, 59, 59);
+  --main-text-color-theme2: #ffffff;
+  --secondary-text-color-theme2: #ffffff7e;
+  --border-color-theme2: rgba(83, 100, 113, 0.619);
+
+
+  --background-color: var(--bg-color-theme1);
+  --font-main-color: var(--main-text-color-theme1);
+  --font-second-color: var(--secondary-text-color-theme1);
+  --border-color: var(--border-color-theme1);
+}

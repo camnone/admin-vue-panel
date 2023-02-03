@@ -74,12 +74,12 @@ export default {
 
 tbody {
   tr:nth-child(odd) {
-    background: $bg-color;
+    background: var(--background-color);
   }
 
   tr {
-    background: $input-bg-color;
-    color: $main-color;
+    background: var(--border-color);
+    color: var(--font-main-color);
   }
 
   td {
@@ -93,7 +93,7 @@ tbody {
 
   td:not(:first-child) {
     text-align: center;
-    border-color: $secondary-color;
+    border-color: var(--border-color);
     border-left-width: 1px;
     border-top-width: 0px;
     border-right-width: 0px;
@@ -151,7 +151,7 @@ tbody {
   flex-shrink: 0;
   height: 1rem;
   width: 1rem;
-  color: $bg-color;
+  color: var(--background-color);
   border-width: 1px;
 }
 
@@ -207,7 +207,7 @@ tbody {
       align-items: center;
       width: 1.5rem;
       height: 1.5rem;
-      color: $bg-color;
+      color: var(--background-color);
       background: transparent;
 
       svg {

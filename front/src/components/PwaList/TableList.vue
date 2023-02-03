@@ -66,10 +66,10 @@ export default {
 @import '../../assets/styles/variables.scss';
 .table-wrapper {
   border-radius: 1rem;
-  background: $bg-color;
+  background: var(--background-color);
   margin-top: 15px;
-  border-right: 1px solid $secondary-color;
-  border-left: 1px solid $secondary-color;
+  border-right: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
 
   .list-else {
     width: 100%;
@@ -83,25 +83,25 @@ export default {
   }
 
   table {
-    color: $bg-color;
+    color: var(--background-color);
     font-weight: 300;
     width: 100%;
 
     text-indent: 0;
-    border-color: $secondary-color;
+    border-color: var(--border-color);
     border-collapse: collapse;
 
     thead {
       display: table-header-group;
-      background: $bg-color;
-      border: 1px solid $secondary-color;
+      background: var(--background-color);
+      border: 1px solid var(--border-color);
       border-radius: 1px;
-      color: #000;
+      color: var(--font-main-color);
     }
 
     th {
       padding: 0.75rem;
-      border: 1px solid $secondary-color;
+      border: 1px solid var(--border-color);
 
       &:last-child {
         text-align: right;
@@ -129,12 +129,12 @@ export default {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding: 0.75rem;
-  background-color: $bg-color;
+  background-color: var(--background-color);
   border-radius: 0 0 10px 10px;
-  border: 1px solid $secondary-color;
+  border: 1px solid var(--border-color);
 
   .wrapper {
-    background-color: $bg-color;
+    background-color: var(--background-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,7 +146,7 @@ export default {
       margin-bottom: -0.75rem;
 
       button {
-        background: $secondary-color;
+        background: var(--border-color);
         padding: 0.25rem;
         border-radius: 0.25rem;
         white-space: nowrap;
@@ -162,7 +162,7 @@ export default {
         
 
         span {
-          color: $main-color;
+          color: var(--font-main-color);
           padding-left: 0.5rem;
           padding-right: 0.5rem;
           font-size: .875rem;
@@ -172,13 +172,13 @@ export default {
     }
 
     .page-of {
-      background-color: $bg-color;
+      background-color: var(--border-color);
       padding: 5px;
       border-radius: 5px;
       small {
         font-size: 1rem;
         font-weight: 400;
-        color: $main-color;
+        color: var(--font-main-color);
       }
     }
   }

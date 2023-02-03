@@ -3,16 +3,20 @@
     <div class="nav-wrapper">
       <div class="wrapper">
       </div>
-      <Profile />
+      <div class="profile">
+        <Switch />
+        <Profile />
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
+import Switch from '../UI/Switch.vue';
 import SearchInput from '../UI/SearchInput.vue';
 import Profile from '../Nav/Profile.vue';
 export default {
-  components: { SearchInput, Profile }
+  components: { SearchInput, Profile,Switch }
 }
 </script>
 
@@ -20,7 +24,7 @@ export default {
 @import '../../assets/styles/variables.scss';
 .nav {
   position: fixed;
-  background:  $bg-color;
+  background:  var(--background-color);
   top: 0;
   left: 0;
   right: 0;
@@ -30,7 +34,7 @@ export default {
   padding-right: 2rem;
   padding-bottom: 0.5rem;
   z-index: 30;
-  border-bottom:1px solid $secondary-color;
+  border-bottom:1px solid var(--border-color);
   &-wrapper {
     
     max-width: 72rem;
@@ -38,7 +42,12 @@ export default {
     align-items: center;
     justify-content: space-between;
     display: flex;
-
+    .profile{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 15px;
+    }
     .wrapper {
       display: flex;
       justify-content: space-between;

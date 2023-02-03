@@ -40,13 +40,13 @@
   outline: none;
   border-radius: 25px;
   transition: all .5s ease-in-out;
-  background-color: $secondary-color;
+ // background-color: var(--font-second-color);
   padding-right: 40px;
-  color: $main-color;
+  color: var(--font-main-color);
 }
 
 .input-search::placeholder {
-  color: $main-color;
+  color: var(--font-main-color);
   font-size: 18px;
   letter-spacing: 2px;
   font-weight: 500;
@@ -63,8 +63,8 @@
   border-radius: 50%;
   position: absolute;
   right: 0px;
-  color: $secondary-color;
-  background-color: transparent;
+  color: var(--font-main-color);
+  background-color: var(--font-second-color);
   pointer-events: painted;
 
   svg {
@@ -76,7 +76,7 @@
   width: 300px;
   border-radius: 0px;
   background-color: transparent;
-  border-bottom: 1px solid $secondary-color;
+  border-bottom: 1px solid var(--border-color);
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 

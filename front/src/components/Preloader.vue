@@ -1,7 +1,7 @@
 <template>
-  <transition  class="fade">
+  <transition class="fade">
     <div v-if="show" class="loader-container">
-      <div  class="loader-wrapper">
+      <div class="loader-wrapper">
         <div class="loader">
           <div class="loader loader--inner"></div>
         </div>
@@ -12,21 +12,21 @@
 
 <script>
 export default {
-  data(){
-    return{
+  data() {
+    return {
       show: true
     }
   },
-  methods:{
-    hide(){
+  methods: {
+    hide() {
       setTimeout(() => {
-      this.show = false
-    }, 1000);
+        this.show = false
+      }, 1000);
     }
   },
-  mounted(){
+  mounted() {
     this.hide()
-  },
+  }
 }
 </script>
 
@@ -34,19 +34,20 @@ export default {
 @import '../assets/styles/animation';
 @import '../assets/styles/variables';
 
-.loader-container{
+.loader-container {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: $bg-color;
+  background: var(--background-color);
   z-index: 999;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
+
   .loader-wrapper {
     width: 8rem;
     height: 8rem;
-  
+
     .loader {
       width: 100%;
       height: 100%;
@@ -56,7 +57,7 @@ export default {
       border-radius: 50%;
       animation: rotate 5s linear infinite;
     }
-  
+
     .loader--inner {
       border-top-color: #7EFFB2;
       border-bottom-color: #2CD9FF;
@@ -64,5 +65,4 @@ export default {
     }
   }
 }
-
 </style>

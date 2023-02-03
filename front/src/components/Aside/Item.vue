@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/styles/variables';
 .papper {
-  color: $main-color;
+  color: var( --font-main-color);
   cursor: pointer;
   display: flex;
   align-items: center;

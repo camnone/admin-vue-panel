@@ -1,6 +1,6 @@
 <template>
     <Container>
-      <div style="text-align:center; color:#fff">Привет, это главная страница! Но она пока пустая ;()</div>
+      <div class="main-title">Привет, это главная страница! Но она пока пустая ;()</div>
     </Container>
 </template>
 
@@ -9,5 +9,8 @@ import Container from '../components/Container/Container.vue';
 </script>
 
 <style lang="scss" scoped>
-
+.main-title{
+  text-align:center; 
+  color:var(--main-text-color);
+}
 </style>

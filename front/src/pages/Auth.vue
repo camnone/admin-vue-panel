@@ -51,9 +51,9 @@ const { authorization, error, password, login } = useAuth()
 
   form {
     width: 33.33%;
-    background-color: $bg-color;
+    background-color: var(--background-color);
     border-radius: 1rem;
-    border: 1px solid $secondary-color;
+    border: 1px solid var(--border-color);
     flex-direction: column;
     display: flex;
 

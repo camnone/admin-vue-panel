@@ -68,12 +68,12 @@ export default {
       justify-content: space-between;
       span{
         text-align: center;
-        color:#fff
+        color:var(--font-main-color)
       }
       .bg{
         border-radius: 1rem;
         padding: 15px;
-        background: #d2d2d4;
+        background: var(--background-color);
         display: flex;
         column-gap: 15px;
       }
@@ -86,7 +86,7 @@ export default {
     column-gap: 15px;
     padding: 15px;
     align-items: center;
-    background: #d2d2d4;
+    background: var(--background-color);
     justify-content: center;
     .input{
       width: 100%;

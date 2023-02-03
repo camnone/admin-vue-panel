@@ -89,11 +89,11 @@ const { password, login, registration, isLoading, error, name, secondName, bayer
   form {
     position: relative;
     width: 33.33%;
-    background-color: $bg-color;
+    background-color: var(--background-color);
     border-radius: 1rem;
     flex-direction: column;
     display: flex;
-    border: 1px solid $secondary-color;
+    border: 1px solid var(--border-color);
     .center-container{
       padding: 3rem 1.5rem;
     }

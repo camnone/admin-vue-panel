@@ -94,7 +94,7 @@ const { name, secondName,bayerId } = useProfile()
   align-items: center;
 
   &-name {
-    color:#0C151C;
+    color:var(--main-text-color);
     font-size: 1.2rem;
     span{
       font-size: 1.1rem;
@@ -114,7 +114,7 @@ const { name, secondName,bayerId } = useProfile()
 
   &-more {
     svg {
-      color: #0C151C;
+      color: var(--main-text-color);
     }
   }
 }

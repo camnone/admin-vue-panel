@@ -19,8 +19,8 @@ html {
 body {
   height: 100%;
   width: 100%;
-  color: $main-color;
-  background: $bg-color;
+  color: var(--font-main-color);
+  background: var(--background-color);
 }
 
 .link {

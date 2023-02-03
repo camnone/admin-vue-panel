@@ -42,13 +42,13 @@ export default {
   background: rgba(0, 0, 0, .5);
   position: fixed;
   display: flex;
-  border: 1px solid $secondary-color;
+  border: 1px solid var(--border-color);
 
   &-content {
     position: relative;
     padding: 40px 40px 15px 40px;
     margin: auto;
-    background: $bg-color;
+    background: var(--background-color);
     border-radius: 12px;
 
     .close {
@@ -61,7 +61,7 @@ export default {
       height: 30px;
       justify-content: center;
       align-items: center;
-      color: $main-color;
+      color: var(--font-main-color)
 
       svg {
         width: 100%;

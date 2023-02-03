@@ -41,7 +41,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/styles/variables.scss';
 .aside {
-  color: #000;
   height: 100vh;
   width: 15rem;
   display: flex;
@@ -78,7 +77,7 @@ export default {
   }
 
   &-wrapper {
-    border-right:1px solid $secondary-color;
+    border-right:1px solid var(--border-color);
     display: flex;
     row-gap: 20px;
     flex: 1 1 0%;

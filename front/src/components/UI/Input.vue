@@ -20,16 +20,16 @@ export default {
 @import '../../assets/styles/variables.scss';
 input {
   position: relative;
-  background: $bg-color;
+  background: var(--background-color);
   line-height: 1.25;
-  color: $main-color;
+  color: var(--font-main-color);
   padding: 0.875rem 1.375rem;
   width: 100%;
   border-radius: 0.5rem;
   transition: all .3s ease;
   z-index: 1;
   font-size: 1rem;
-  border:1px solid $secondary-color;  
+  border:1px solid var(--border-color);
   outline:none;
   &::placeholder{
     font-size: 0.9rem;
