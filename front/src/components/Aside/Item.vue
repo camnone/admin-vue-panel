@@ -33,7 +33,7 @@ export default {
   column-gap: 10px;
 
   .img {
-    width: 1.7rem;
+    width: 1.5rem;
     height: auto;
     display: inline-flex;
     justify-content: center;
@@ -49,7 +49,7 @@ export default {
 
   span {
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
   }
 

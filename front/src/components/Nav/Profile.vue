@@ -1,5 +1,6 @@
 <script setup>
 import { useProfile } from '../../hooks/useProfile'
+import Arrow from '../UI/arrow.vue';
 const { name, secondName,bayerId } = useProfile()
 </script>
 
@@ -77,11 +78,7 @@ const { name, secondName,bayerId } = useProfile()
       </svg>
     </div>
     <div class="profile-name">{{ name }} {{ secondName }} <span>{{bayerId}}</span></div>
-    <div class="profile-more">
-      <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
-        <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path>
-      </svg>
-    </div>
+    <Arrow/>
   </div>
 </template>
 
@@ -112,10 +109,6 @@ const { name, secondName,bayerId } = useProfile()
     }
   }
 
-  &-more {
-    svg {
-      color: var(--main-text-color);
-    }
-  }
+
 }
 </style>

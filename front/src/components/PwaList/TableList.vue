@@ -138,7 +138,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     .count {
       display: flex;
       justify-content: flex-start;

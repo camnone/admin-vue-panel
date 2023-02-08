@@ -15,13 +15,12 @@ export default {
     pwaStatus(e) {
       this.statusBth === 'theme1' ? this.statusBth = 'theme2' : this.statusBth = 'theme1'
 
-      if(this.statusBth === 'theme1') {
+      if (this.statusBth === 'theme1') {
         localStorage.setItem('theme', 'white')
       } else {
         localStorage.setItem('theme', 'black')
       }
       e.target.classList.toggle('switch')
-      console.log(this.statusBth)
     }
   },
   watch: {
@@ -37,8 +36,8 @@ export default {
       document.body.style.setProperty('--border-color', borderColor)
     }
   },
-  mounted(){
-    if(localStorage.getItem('theme') === 'black') {
+  mounted() {
+    if (localStorage.getItem('theme') === 'black') {
       this.statusBth = 'theme2'
       this.$refs.statusBth.classList.add('switch')
     }

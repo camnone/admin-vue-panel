@@ -133,7 +133,7 @@ export default {
       svg {
         color: var(--font-main-color);
       }
-    }
+    } 
   }
 
   &-title {
