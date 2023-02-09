@@ -9,7 +9,7 @@ import path from 'path'
 import { errorHandler, notFound } from './app/middleware/error.middleware.js'
 
 import userRouter from './app/auth/user.routes.js'
-import patternRoutes from './app/pattern/pennetn.routes.js'
+import patternRoutes from './app/pattern/pattern.routes.js'
 import { prisma } from './app/prisma.js'
 import profileRoutes from './app/profile/profile.routes.js'
 import pwaRoutes from './app/pwa/pwa.routes.js'

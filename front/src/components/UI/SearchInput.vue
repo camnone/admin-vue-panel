@@ -10,20 +10,27 @@
 </template>
 
 <script>
-  export default {
-    props:{
-      modelValue: [String, Number]
-    },
-    methods:{
-      updateInput(event) {
+export default {
+  props: {
+    modelValue: [String, Number]
+  },
+  methods: {
+    updateInput(event) {
       this.$emit('update:modelValue', event.target.value)
     }
-    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '../../assets/styles/variables.scss';
+
+.input {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .search-box {
   width: fit-content;
   height: fit-content;
@@ -40,7 +47,7 @@
   outline: none;
   border-radius: 25px;
   transition: all .5s ease-in-out;
- // background-color: var(--font-second-color);
+  // background-color: var(--font-second-color);
   padding-right: 40px;
   color: var(--font-main-color);
 }
@@ -68,7 +75,7 @@
   pointer-events: painted;
 
   svg {
-    color:#000;
+    color: #000;
   }
 }
 

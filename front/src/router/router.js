@@ -3,6 +3,7 @@ import pwaList from '../pages/pwaList.vue';
 import Auth from '../pages/Auth.vue';
 import Registration from '../pages/Registration.vue';
 import Template from '../pages/Template.vue';
+import AllPatterns from '../pages/AllPatterns.vue'
 import store from '../store/index'
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -50,6 +51,16 @@ const routes = [
     meta: {
       requiresAuth: false
     }
+  },
+
+  {
+    path: '/all-pattern',
+    name:"all-patterns",
+    component: AllPatterns,
+    meta: {
+      requiresAuth: true
+    }
+
   },
 ]
 

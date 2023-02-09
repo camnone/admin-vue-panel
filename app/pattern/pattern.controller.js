@@ -7,62 +7,81 @@ import path from 'path'
 import { prisma } from '../prisma.js'
 
 export const uploadFiles = expressAsyncHandler(async (req, res) => {
-	try {
-		const dirname = path.resolve()
-		const pattern = dirname + `/uploads` // Путь для папки
+	const dirname = path.resolve()
+	const template = dirname + `/uploads` // Путь для папки
 
-		const folderName = req.files.pattern.name.split('.')[0] // Название папки
-		const FolderPathName = pattern + '/' + folderName // Путь для папки с названием
+	const folderName = req.body.patternName // Название папки
+	const FolderPathName = template + '/' + folderName // Путь для папки с названием
 
-		const archivePath = dirname + `/uploads/${folderName}` // Путь для архива
-		const pathArchiveName = archivePath + '/' + req.files.pattern.name // Название архива
+	const archivePath = dirname + `/uploads/${folderName}` // Путь для архива
+	const pathArchiveName = archivePath + '/' + req.files.pattern.name // Название архива
 
-		fs.access(FolderPathName, async err => {
-			if (err && err.code === 'ENOENT') {
-				res.json({ message: 'Папка создана' })
-				res.status(200)
-			} else {
-				res.status(409)
-				res.json({ message: 'Папка уже существует' })
-			}
-		})
+	/* Запись в БД */
 
-		/* 		await fs.mkdirSync(FolderPathName)
-
-		await req.files.pattern.mv(pathArchiveName)
-
-		const zip = new AdmZip(pathArchiveName)
-		await zip.extractAllTo(archivePath, true)
-
-		await fs.unlinkSync(pathArchiveName) */
-	} catch (e) {
-		console.log(e)
-		res.status(404)
-		throw new Error('Ошибка при загрузке файла')
-	}
-})
-
-/* xport const deleteFile = expressAsyncHandler(async (req, res) => {
-	try {
-		const folderNames = req.params.id
-		const patterns = await prisma.Pattern.delete({
-			where: {
-				name: +req.params.id
-			}
-		})
-		if (patterns) {
-			const dirname = path.resolve()
-			let pattern = dirname + `/uploads/` + '/' + `${folderNames}`
-			fs.rmSync(pattern, { recursive: true, force: true })
-			res.status(200)
-			res.send(`Файл ${folderNames} успешно удален`)
-		} else {
-			res.status(401)
-			res.send(`Файл ${folderNames} не найден`)
+	const isHaveTemplate = await prisma.pattern.findUnique({
+		where: {
+			name: folderName
 		}
-	} catch (e) {
-		throw new Error('Ошибка при удалении файла')
+	})
+
+	if (isHaveTemplate) {
 		res.status(404)
+		throw new Error('Файл уже существует')
+	}
+
+	const patterns = await prisma.Pattern.create({
+		data: {
+			name: folderName,
+			path: FolderPathName
+		}
+	})
+
+	await fs.mkdirSync(FolderPathName)
+
+	await req.files.pattern.mv(pathArchiveName)
+
+	const zip = new AdmZip(pathArchiveName)
+	await zip.extractAllTo(archivePath, true)
+
+	await fs.unlinkSync(pathArchiveName)
+
+	res.status(200)
+	res.json(patterns)
+})
+
+export const deleteFile = expressAsyncHandler(async (req, res) => {
+	const name = req.params.id
+
+	const isHaveTemplate = await prisma.pattern.findUnique({
+		where: {
+			name: name
+		}
+	})
+
+	fs.rmSync(isHaveTemplate.path, { recursive: true, force: true })
+
+	if (isHaveTemplate) {
+		await prisma.pattern.delete({
+			where: {
+				name: name
+			}
+		})
+
+		res.status(200)
+		res.json({ message: 'Файл успешно удален' })
+	} else {
+		res.status(404)
+		throw new Error('Файл не найден')
 	}
 })
- */
+
+export const getFiles = expressAsyncHandler(async (req, res) => {
+	const patterns = await prisma.pattern.findMany({})
+	if (patterns) {
+		res.status(200)
+		res.json(patterns)
+	} else {
+		res.status(404)
+		throw new Error('Файлы не найдены')
+	}
+})

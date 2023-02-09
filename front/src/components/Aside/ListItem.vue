@@ -18,10 +18,19 @@
 		</div>
 		<Modal v-model:show='modalVisible'>
 			<div class='grid'>
-				<Input v-model="patternName"  type='text' :placeholder="'Название шаблона'" />
-				<div class='wrapper' :class="{'photo-active': isDragStarted }">
+				<Input v-model='patternName' type='text' class='pattern-input' :placeholder="'Название шаблона'" />
+				<div class='wrapper' :class="{ 'active': isDragStarted }">
+					<Close @click='removeFile' v-if='isDragStarted' />
+					<div class='img'>
+						<svg fill='#000000' width='800px' height='800px' viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg'>
+							<path
+								d='M533.333 586.667v106.666h-320v479.997h.422l233.6 213.34H1472.64l233.6-213.34h.43V693.333h-320V586.667h352c41.23 0 74.66 33.429 74.66 74.666v511.997H1856c35.35 0 64 28.66 64 64V1856c0 35.35-28.65 64-64 64H64c-35.346 0-64-28.65-64-64v-618.67c0-35.34 28.654-64 64-64h42.667V661.333c0-41.237 33.429-74.666 74.666-74.666h352ZM172.378 1280h-65.711v533.33H1813.33V1280h-65.71l-233.6 213.33H405.978L172.378 1280ZM1013.33 0v1044.579l228.96-228.958 75.42 75.425L960 1248.76 602.288 891.046l75.424-75.425 228.955 228.955V0h106.663Z'
+								fill-rule='evenodd' />
+						</svg>
+					</div>
+					<div class='folder-name' v-show="files !== ''">{{ files && this.files[0].name }}</div>
 					<input @dragenter='isDragStarted = true' @dragleave='isDragStarted = false' class='input-uploader' ref='files'
-								 type='file' @change='handleFileUpload()'>
+						type='file' @change='handleFileUpload()'>
 				</div>
 				<Btn @click='submitFile()' class='btn'>Отправить</Btn>
 			</div>
@@ -36,16 +45,18 @@ import Modal from '../UI/Modal.vue'
 import Download from '../dowload/download.component.vue'
 import Input from '../UI/Input.vue'
 import Btn from '../UI/btn.vue'
+import Close from '../UI/Close.vue'
 import { ref } from 'vue'
 import axios from 'axios'
 
 export default {
-	components: { Arrow, Item, Modal, Download, Input, Btn },
+	components: { Arrow, Item, Modal, Download, Input, Btn, Close },
 	data() {
 		return {
 			files: '',
 			modalVisible: false,
-			patternName: ''
+			patternName: '',
+			isDragStarted: false
 		}
 	},
 	methods: {
@@ -57,26 +68,36 @@ export default {
 		},
 		submitFile() {
 			let formData = new FormData()
-			for (let i = 0; i < this.files.length; i++) {
-				let file = this.files[i]
-				formData.append('pattern', file)
-			}
+			formData.append('pattern', this.files[0])
+			formData.append('patternName', this.patternName)
 			axios.post('http://localhost:5000/api/pattern', formData, {
-					headers: {
-						'Content-Type': 'multipart/form-data'
-					}
+				headers: {
+					'Content-Type': 'multipart/form-data'
 				}
-			).then(function() {
-				console.log('SUCCESS!!')
+			}
+			).finally(() => {
+				this.files = ''
+				this.patternName = ''
+				this.isDragStarted = true
 			})
-				.catch(function() {
-					console.log('FAILURE!!')
-				})
+		},
+		removeFile() {
+			this.files = ''
 		},
 		handleFileUpload() {
 			this.files = this.$refs.files.files
 		}
+	},
+	watch: {
+		files() {
+			if (this.files !== '') {
+				this.isDragStarted = true
+			} else {
+				this.isDragStarted = false
+			}
+		}
 	}
+
 }
 
 
@@ -84,7 +105,6 @@ export default {
 
 
 <style lang='scss' scoped>
-
 .listItem {
 	display: flex;
 	flex-direction: column;
@@ -100,59 +120,61 @@ export default {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
-	}
-
-	.wrapper {
-		padding: 20px;
-		display: flex;
-		row-gap: 15px;
-		flex-direction: column;
-		position: relative;
-		text-align: center;
-		min-height: 150px;
-		justify-content: center;
-		border: 2px dotted #eee;
-		border-radius: 10px;
-		color: var(--font-main-color);
 
 		.btn {
-			margin: 0 auto;
 			width: 100%;
 		}
-	}
 
-	.photo-active {
-		background: #2CD9FF;
-	}
+		.wrapper {
+			padding: 20px 20px 5px 20px;
+			display: flex;
+			row-gap: 15px;
+			flex-direction: column;
+			position: relative;
+			text-align: center;
+			min-height: 150px;
+			justify-content: flex-end;
+			border: 2px dotted var(--border-color);
+			border-radius: 10px;
+			color: var(--font-main-color);
 
-	.photo-inActive {
-		background: #2CD9FF;
-	}
+			.img {
+				content: '';
+				position: absolute;
+				background: url('../../assets/img/archive.svg');
+				width: 100%;
+				max-width: 70px;
+				height: auto;
+				z-index: 1;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 20px;
 
-	.photo-remove {
-		cursor: pointer;
-		position: absolute;
-		outline: none;
-		top: 0;
-		right: 0;
-		width: calc(100% + 10px);
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background-color: rgba(#000, 0.05);
-		border: 0;
+				svg {
+					width: 100%;
+					height: auto;
+					fill: #e6e6e633;
+				}
+			}
 
-		&::after {
-			content: 'x';
-			position: absolute;
-			z-index: 1;
-			top: 36%;
-			right: 19%;
-			transform: translate(-50%, -50%);
-			width: 10px;
-			height: 10px;
+			&.active {
+				border: 2px dotted var(--font-main-color);
 
+				svg {
+					fill: var(--font-main-color);
+				}
+			}
+
+			.folder-name {
+
+				font-size: 1rem;
+				width: 100%;
+				bottom: 0;
+			}
 		}
+
+
 	}
 
 	.input-uploader {
@@ -197,22 +219,5 @@ export default {
 		}
 
 	}
-
-	.photo-uploader {
-		display: flex;
-		justify-content: space-between;
-		flex-direction: row;
-
-		&-photos {
-			position: relative;
-
-			> img {
-				width: 200px;
-				height: auto;
-				margin-right: 60px;
-			}
-		}
-	}
-
 }
 </style>

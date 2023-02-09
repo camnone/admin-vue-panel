@@ -1,0 +1,9 @@
+
+001 -React-Hook-Form
+https://www.youtube.com/watch?v=1_4yH0C9iq0
+
+002 -Redux
+https://www.youtube.com/watch?v=iBN4ro1MNh8
+
+004 Next.js-SSG.
+https://nextjs.org/docs/basic-features/data-fetching/overview

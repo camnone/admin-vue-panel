@@ -22,9 +22,9 @@ export default {
 .site {
   max-width: 72rem;
   margin: 0 auto;
-  padding-top: 3rem;
+  padding-top: 1.3rem;
   display: flex;
-  row-gap: 50px;
+  row-gap: 15px;
   flex-direction: column;
 }
 </style>

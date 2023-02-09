@@ -2,21 +2,15 @@
   <div class="dialog" v-if="show" @click="hideModal">
     <div @click.stop class="dialog-content">
       <slot></slot>
-      <div class="close" @click="hideModal">
-        <svg viewBox="0 0 24 24" width="20" height="20" class="inline-block">
-          <path fill="currentColor"
-            d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z">
-          </path>
-        </svg>
-      </div>
+			<Close @click="hideModal"/>
     </div>
   </div>
 </template>
 
 <script>
-import Multiselect from '@vueform/multiselect';
+import Close from '../UI/Close.vue'
 export default {
-  components: { Multiselect },
+	components:{Close},
   props: {
     show: {
       type: Boolean,
@@ -50,23 +44,6 @@ export default {
     margin: auto;
     background: var(--background-color);
     border-radius: 12px;
-
-    .close {
-      cursor: pointer;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      width: 30px;
-      height: 30px;
-      justify-content: center;
-      align-items: center;
-      color: var(--font-main-color)
-
-      svg {
-        width: 100%;
-      }
-    }
   }
 }
 </style>

@@ -33,13 +33,9 @@ model Pwa {
 }
 
 model Pattern {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  name      String   @unique
-  type      String
-  size      Int      @default(0)
-  path      String   @default("")
-
-  @@map("patterns")
+  id         Int      @id @default(autoincrement())
+  created_at DateTime @default(now()) @map("created_at")
+  updated_at DateTime @updatedAt @map("updated_at")
+  name       String   @unique
+  path       String   @default("")
 }
